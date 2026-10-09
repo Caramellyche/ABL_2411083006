@@ -1,7 +1,7 @@
-package com.customer.controller;
+package com.faizul.customer.controller;
 
-import com.customer.entity.Customer;
-import com.customer.service.CustomerService;
+import com.faizul.customer.entity.Customer;
+import com.faizul.customer.service.CustomerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

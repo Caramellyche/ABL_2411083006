@@ -1,7 +1,7 @@
-package com.customer.service;
+package com.faizul.customer.service;
 
-import com.customer.entity.Customer;
-import com.customer.repository.CustomerRepository;
+import com.faizul.customer.entity.Customer;
+import com.faizul.customer.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

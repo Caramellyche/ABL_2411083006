@@ -1,4 +1,4 @@
-package com.customer;
+package com.faizul.customer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
