@@ -1,16 +1,10 @@
 package com.faizul.product.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -25,10 +19,6 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "jenis_product_id")
     private JenisProduct jenisProduct;
-
-    @ManyToMany(mappedBy = "products")
-    @JsonIgnoreProperties("products")
-    private List<Pelanggan> pelangganList = new ArrayList<>();
 
     public Product() {
     }
@@ -86,13 +76,5 @@ public class Product {
 
     public void setJenisProduct(JenisProduct jenisProduct) {
         this.jenisProduct = jenisProduct;
-    }
-
-    public List<Pelanggan> getPelangganList() {
-        return pelangganList;
-    }
-
-    public void setPelangganList(List<Pelanggan> pelangganList) {
-        this.pelangganList = pelangganList;
     }
 }
