@@ -61,4 +61,23 @@ public class PelangganController {
         }
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/{id}/product/{productId}")
+    public ResponseEntity<Pelanggan> addProduct(@PathVariable Long id,
+            @PathVariable Long productId) {
+        Pelanggan result = pelangganService.addProduct(id, productId);
+        if (result == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/{id}/detail")
+    public ResponseEntity<PelangganService.PelangganDetail> getDetail(@PathVariable Long id) {
+        PelangganService.PelangganDetail detail = pelangganService.getDetail(id);
+        if (detail == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(detail);
+    }
 }
