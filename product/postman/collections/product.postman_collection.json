@@ -1,0 +1,24 @@
+{
+  "info": {
+    "name": "Product API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8081" },
+    { "key": "productId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Create product",
+      "event": [{ "listen": "test", "script": { "exec": ["const data = pm.response.json();", "if (data.id) pm.collectionVariables.set('productId', data.id);"] } }],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"nama\": \"Produk Uji\",\n  \"harga\": 12000000,\n  \"deskripsi\": \"Contoh produk untuk tes\",\n  \"jenisProduct\": \"Elektronik\"\n}" },
+        "url": "{{baseUrl}}/api/product"
+      }
+    },
+    { "name": "Get all products", "request": { "method": "GET", "url": "{{baseUrl}}/api/product" } },
+    { "name": "Get product by captured ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/product/{{productId}}" } }
+  ]
+}

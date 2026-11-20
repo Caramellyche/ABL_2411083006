@@ -1,0 +1,24 @@
+{
+  "info": {
+    "name": "Customer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8082" },
+    { "key": "customerId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Create customer",
+      "event": [{ "listen": "test", "script": { "exec": ["const data = pm.response.json();", "if (data.id) pm.collectionVariables.set('customerId', data.id);"] } }],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"nama\": \"Panjul\",\n  \"email\": \"you@example.com\",\n  \"nomorTelepon\": \"081234567890\",\n  \"alamat\": \"Jakarta\"\n}" },
+        "url": "{{baseUrl}}/api/customer"
+      }
+    },
+    { "name": "Get all customers", "request": { "method": "GET", "url": "{{baseUrl}}/api/customer" } },
+    { "name": "Get customer by captured ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/customer/{{customerId}}" } }
+  ]
+}

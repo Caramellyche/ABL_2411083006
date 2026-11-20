@@ -1,0 +1,58 @@
+{
+  "info": {
+    "name": "Order Command API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8083"
+    },
+    {
+      "key": "orderId",
+      "value": "1"
+    },
+    {
+      "key": "productId",
+      "value": "1"
+    },
+    {
+      "key": "customerId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create order",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": {{productId}},\n  \"pelangganId\": {{customerId}},\n  \"jumlah\": 2\n}"
+        },
+        "url": "{{baseUrl}}/api/orders",
+        "description": "Create order di order_command (8083). Order sync ke order_query via RabbitMQ."
+      }
+    },
+    {
+      "name": "Update order",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jumlah\": 3\n}"
+        },
+        "url": "{{baseUrl}}/api/orders/{{orderId}}"
+      }
+    },
+    {
+      "name": "Delete order",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/orders/{{orderId}}"
+      }
+    }
+  ]
+}

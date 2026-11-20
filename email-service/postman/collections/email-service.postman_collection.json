@@ -1,0 +1,14 @@
+{
+  "info": {
+    "name": "Email Service Operations",
+    "description": "Email is triggered by OrderCreated in RabbitMQ; no direct send endpoint. Check health and trigger email by creating an order through Order API after creating product/customer records.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:8084" }],
+  "item": [
+    {
+      "name": "Email consumer health",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/emails/health" }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: auth-route
+              uri: lb://AUTH-SERVICE
+              predicates:
+                - Path=/auth/**
+            - id: order-query-route
+              uri: lb://ORDER-QUERY
+              predicates:
+                - Path=/api/orders/**, /api/orders
+                - Method=GET
+              filters:
+                - AuthenticationFilter
+            - id: order-command-route
+              uri: lb://ORDER-COMMAND
+              predicates:
+                - Path=/api/orders/**, /api/orders
+                - Method=POST,PUT,DELETE
+              filters:
+                - AuthenticationFilter
+            - id: product-route
+              uri: lb://PRODUCT
+              predicates:
+                - Path=/api/product/**, /api/product
+            - id: customer-route
+              uri: lb://CUSTOMER
+              predicates:
+                - Path=/api/customer/**, /api/customer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
