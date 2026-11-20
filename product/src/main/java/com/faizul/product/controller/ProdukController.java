@@ -27,9 +27,9 @@ public class ProdukController {
 
     @GetMapping
     public ResponseEntity<List<Product>> getAllProduk(
-            @RequestParam(name = "idjenis", required = false) Long idJenis) {
-        if (idJenis != null) {
-            return ResponseEntity.ok(productService.getProductsByJenisId(idJenis));
+            @RequestParam(name = "jenisProduct", required = false) String jenisProduct) {
+        if (jenisProduct != null) {
+            return ResponseEntity.ok(productService.getProductsByJenisProduct(jenisProduct));
         }
         return ResponseEntity.ok(productService.getAllProduk());
     }
@@ -41,11 +41,6 @@ public class ProdukController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(product);
-    }
-
-    @GetMapping("/jenis/{jenisId}")
-    public ResponseEntity<List<Product>> getProdukByJenisId(@PathVariable("jenisId") Long jenisId) {
-        return ResponseEntity.ok(productService.getProductsByJenisId(jenisId));
     }
 
     @PostMapping

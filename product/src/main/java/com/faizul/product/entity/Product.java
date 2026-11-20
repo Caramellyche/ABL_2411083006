@@ -4,8 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Product {
@@ -16,9 +14,7 @@ public class Product {
     private double harga;
     private String deskripsi;
 
-    @ManyToOne
-    @JoinColumn(name = "jenis_product_id")
-    private JenisProduct jenisProduct;
+    private String jenisProduct;
 
     public Product() {
     }
@@ -30,7 +26,7 @@ public class Product {
         this.deskripsi = deskripsi;
     }
 
-    public Product(Long id, String nama, double harga, String deskripsi, JenisProduct jenisProduct) {
+    public Product(Long id, String nama, double harga, String deskripsi, String jenisProduct) {
         this.id = id;
         this.nama = nama;
         this.harga = harga;
@@ -70,11 +66,11 @@ public class Product {
         this.deskripsi = deskripsi;
     }
 
-    public JenisProduct getJenisProduct() {
+    public String getJenisProduct() {
         return jenisProduct;
     }
 
-    public void setJenisProduct(JenisProduct jenisProduct) {
+    public void setJenisProduct(String jenisProduct) {
         this.jenisProduct = jenisProduct;
     }
 }

@@ -34,3 +34,7 @@ Thumbs.db
 *.mv.db
 *.trace.db
 
+# Local credentials
+.env
+.env.*
+!.env.example

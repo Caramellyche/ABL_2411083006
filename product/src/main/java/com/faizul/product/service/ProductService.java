@@ -37,12 +37,8 @@ public class ProductService {
         return productRepository.save(existingProduct);
     }
 
-    public List<Product> getProductsByJenisId(Long jenisProductId) {
-        return productRepository.findByJenisProductId(jenisProductId);
-    }
-
-    public List<Product> getProductsByNamaJenis(String namaJenis) {
-        return productRepository.findByJenisProductNamaJenisIgnoreCase(namaJenis);
+    public List<Product> getProductsByJenisProduct(String jenisProduct) {
+        return productRepository.findByJenisProductIgnoreCase(jenisProduct);
     }
 
     public boolean deleteProduct(Long id) {
